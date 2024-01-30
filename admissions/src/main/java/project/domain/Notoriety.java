@@ -8,20 +8,24 @@ public class Notoriety {
 
 	private User user;
 
-	private Double averagePont;
+	private Double averagePoint;
+	
+	private Integer facultyId;
 
 	public Notoriety() {
 	}
 
-	public Notoriety(User user, Double averagePont) {
+	public Notoriety(User user, Double averagePoint, Integer facultyId) {
 		this.user = user;
-		this.averagePont = averagePont;
+		this.averagePoint = averagePoint;
+		this.facultyId = facultyId;
 	}
 
-	public Notoriety(Integer id, User user, Double averagePont) {
+	public Notoriety(Integer id, User user, Double averagePoint, Integer facultyId) {
 		this.id = id;
 		this.user = user;
-		this.averagePont = averagePont;
+		this.averagePoint = averagePoint;
+		this.facultyId = facultyId;
 	}
 
 	public Integer getId() {
@@ -40,17 +44,25 @@ public class Notoriety {
 		this.user = user;
 	}
 
-	public Double getAveragePont() {
-		return averagePont;
+	public Double getAveragePoint() {
+		return averagePoint;
 	}
 
-	public void setAveragePont(Double averagePont) {
-		this.averagePont = averagePont;
+	public void setAveragePoint(Double averagePoint) {
+		this.averagePoint = averagePoint;
+	}
+
+	public Integer getFacultyId() {
+		return facultyId;
+	}
+
+	public void setFacultyId(Integer facultyId) {
+		this.facultyId = facultyId;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(averagePont, id, user);
+		return Objects.hash(averagePoint, facultyId, id, user);
 	}
 
 	@Override
@@ -62,13 +74,14 @@ public class Notoriety {
 		if (getClass() != obj.getClass())
 			return false;
 		Notoriety other = (Notoriety) obj;
-		return Objects.equals(averagePont, other.averagePont) && Objects.equals(id, other.id)
-				&& Objects.equals(user, other.user);
+		return Objects.equals(averagePoint, other.averagePoint) && Objects.equals(facultyId, other.facultyId)
+				&& Objects.equals(id, other.id) && Objects.equals(user, other.user);
 	}
 
 	@Override
 	public String toString() {
-		return "Notoriety [id=" + id + ", user=" + user + ", averagePont=" + averagePont + "]";
+		return "Notoriety [id=" + id + ", user=" + user + ", averagePoint=" + averagePoint + ", facultyId=" + facultyId
+				+ "]";
 	}
 
 }
