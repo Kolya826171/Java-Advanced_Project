@@ -2,11 +2,6 @@ package project.domain;
 
 import java.util.Objects;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-
-//@Entity
-//@Table(name = "user")
 public class User {
 
 	private Integer id;
@@ -21,24 +16,30 @@ public class User {
 
 	private String password;
 
+	private Integer facultyId;
+
 	public User() {
 	}
 
-	public User(String firstName, String lastName, String email, UserRole userRole, String password) {
+	public User(String firstName, String lastName, String email, UserRole userRole, String password,
+			Integer facultyId) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.userRole = userRole;
 		this.password = password;
+		this.facultyId = facultyId;
 	}
 
-	public User(Integer id, String firstName, String lastName, String email, UserRole userRole, String password) {
+	public User(Integer id, String firstName, String lastName, String email, UserRole userRole, String password,
+			Integer facultyId) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.userRole = userRole;
 		this.password = password;
+		this.facultyId = facultyId;
 	}
 
 	public Integer getId() {
@@ -89,9 +90,17 @@ public class User {
 		this.password = password;
 	}
 
+	public Integer getFacultyId() {
+		return facultyId;
+	}
+
+	public void setFacultyId(Integer facultyId) {
+		this.facultyId = facultyId;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, firstName, id, lastName, password, userRole);
+		return Objects.hash(email, facultyId, firstName, id, lastName, password, userRole);
 	}
 
 	@Override
@@ -103,15 +112,16 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName)
-				&& Objects.equals(id, other.id) && Objects.equals(lastName, other.lastName)
-				&& Objects.equals(password, other.password) && userRole == other.userRole;
+		return Objects.equals(email, other.email) && Objects.equals(facultyId, other.facultyId)
+				&& Objects.equals(firstName, other.firstName) && Objects.equals(id, other.id)
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
+				&& userRole == other.userRole;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", userRole=" + userRole + ", password=" + password + "]";
+				+ ", userRole=" + userRole + ", password=" + password + ", facultyId=" + facultyId + "]";
 	}
 
 }

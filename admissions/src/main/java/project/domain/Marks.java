@@ -12,24 +12,24 @@ public class Marks {
 
 	private Integer certificate;
 
-	private User user;
+	private Integer userId;
 
 	public Marks() {
 	}
 
-	public Marks(Integer exam, Integer interview, Integer certificate, User user) {
+	public Marks(Integer exam, Integer interview, Integer certificate, Integer userId) {
 		this.exam = exam;
 		this.interview = interview;
 		this.certificate = certificate;
-		this.user = user;
+		this.userId = userId;
 	}
 
-	public Marks(Integer id, Integer exam, Integer interview, Integer certificate, User user) {
+	public Marks(Integer id, Integer exam, Integer interview, Integer certificate, Integer userId) {
 		this.id = id;
 		this.exam = exam;
 		this.interview = interview;
 		this.certificate = certificate;
-		this.user = user;
+		this.userId = userId;
 	}
 
 	public Integer getId() {
@@ -64,17 +64,17 @@ public class Marks {
 		this.certificate = certificate;
 	}
 
-	public User getUser() {
-		return user;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(certificate, exam, id, interview, user);
+		return Objects.hash(certificate, exam, id, interview, userId);
 	}
 
 	@Override
@@ -88,13 +88,13 @@ public class Marks {
 		Marks other = (Marks) obj;
 		return Objects.equals(certificate, other.certificate) && Objects.equals(exam, other.exam)
 				&& Objects.equals(id, other.id) && Objects.equals(interview, other.interview)
-				&& Objects.equals(user, other.user);
+				&& Objects.equals(userId, other.userId);
 	}
 
 	@Override
 	public String toString() {
 		return "Marks [id=" + id + ", exam=" + exam + ", interview=" + interview + ", certificate=" + certificate
-				+ ", user=" + user + "]";
+				+ ", userId=" + userId + "]";
 	}
 
 }
