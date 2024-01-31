@@ -2,34 +2,50 @@ package project.domain;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "marks")
 public class Marks {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
+	@Column
 	private Integer exam;
 
+	@Column
 	private Integer interview;
 
+	@Column
 	private Integer certificate;
 
-	private Integer userId;
+	@OneToOne(mappedBy = "marks")
+	private User user;
 
 	public Marks() {
 	}
 
-	public Marks(Integer exam, Integer interview, Integer certificate, Integer userId) {
+	public Marks(Integer exam, Integer interview, Integer certificate, User user) {
 		this.exam = exam;
 		this.interview = interview;
 		this.certificate = certificate;
-		this.userId = userId;
+		this.user = user;
 	}
 
-	public Marks(Integer id, Integer exam, Integer interview, Integer certificate, Integer userId) {
+	public Marks(Integer id, Integer exam, Integer interview, Integer certificate, User user) {
 		this.id = id;
 		this.exam = exam;
 		this.interview = interview;
 		this.certificate = certificate;
-		this.userId = userId;
+		this.user = user;
 	}
 
 	public Integer getId() {
@@ -64,17 +80,17 @@ public class Marks {
 		this.certificate = certificate;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(certificate, exam, id, interview, userId);
+		return Objects.hash(certificate, exam, id, interview, user);
 	}
 
 	@Override
@@ -88,13 +104,13 @@ public class Marks {
 		Marks other = (Marks) obj;
 		return Objects.equals(certificate, other.certificate) && Objects.equals(exam, other.exam)
 				&& Objects.equals(id, other.id) && Objects.equals(interview, other.interview)
-				&& Objects.equals(userId, other.userId);
+				&& Objects.equals(user, other.user);
 	}
 
 	@Override
 	public String toString() {
 		return "Marks [id=" + id + ", exam=" + exam + ", interview=" + interview + ", certificate=" + certificate
-				+ ", userId=" + userId + "]";
+				+ ", user=" + user + "]";
 	}
 
 }

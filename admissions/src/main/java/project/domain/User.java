@@ -2,44 +2,161 @@ package project.domain;
 
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+@Entity
+@Table(name = "user")
 public class User {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
+	@Column(name = "first_name")
 	private String firstName;
 
+	@Column(name = "last_name")
 	private String lastName;
 
+	@Column
 	private String email;
 
+	@Column(name = "role")
+	@Enumerated(EnumType.STRING)
 	private UserRole userRole;
 
+	@Column
 	private String password;
 
-	private Integer facultyId;
+	@Transient
+	private String passwordConfirm;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "faculty_id", referencedColumnName = "id")
+	private Faculty faculty;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private Marks marks;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Notoriety notoriety;
 
 	public User() {
 	}
 
 	public User(String firstName, String lastName, String email, UserRole userRole, String password,
-			Integer facultyId) {
+			String passwordConfirm) {
+		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.userRole = userRole;
 		this.password = password;
-		this.facultyId = facultyId;
+		this.passwordConfirm = passwordConfirm;
+	}
+
+	public User(String firstName, String lastName, String email, UserRole userRole, String password,
+			String passwordConfirm, Faculty faculty) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userRole = userRole;
+		this.password = password;
+		this.passwordConfirm = passwordConfirm;
+		this.faculty = faculty;
+	}
+
+	public User(String firstName, String lastName, String email, UserRole userRole, String password,
+			String passwordConfirm, Faculty faculty, Marks marks) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userRole = userRole;
+		this.password = password;
+		this.passwordConfirm = passwordConfirm;
+		this.faculty = faculty;
+		this.marks = marks;
+	}
+	
+	public User(String firstName, String lastName, String email, UserRole userRole, String password,
+			String passwordConfirm, Faculty faculty, Marks marks, Notoriety notoriety) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userRole = userRole;
+		this.password = password;
+		this.passwordConfirm = passwordConfirm;
+		this.faculty = faculty;
+		this.marks = marks;
+		this.notoriety = notoriety;
 	}
 
 	public User(Integer id, String firstName, String lastName, String email, UserRole userRole, String password,
-			Integer facultyId) {
+			String passwordConfirm) {
+		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.userRole = userRole;
 		this.password = password;
-		this.facultyId = facultyId;
+		this.passwordConfirm = passwordConfirm;
+	}
+
+	public User(Integer id, String firstName, String lastName, String email, UserRole userRole, String password,
+			String passwordConfirm, Faculty faculty) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userRole = userRole;
+		this.password = password;
+		this.passwordConfirm = passwordConfirm;
+		this.faculty = faculty;
+	}
+
+	public User(Integer id, String firstName, String lastName, String email, UserRole userRole, String password,
+			String passwordConfirm, Faculty faculty, Marks marks) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userRole = userRole;
+		this.password = password;
+		this.passwordConfirm = passwordConfirm;
+		this.faculty = faculty;
+		this.marks = marks;
+	}
+
+	public User(Integer id, String firstName, String lastName, String email, UserRole userRole, String password,
+			String passwordConfirm, Faculty faculty, Marks marks, Notoriety notoriety) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.userRole = userRole;
+		this.password = password;
+		this.passwordConfirm = passwordConfirm;
+		this.faculty = faculty;
+		this.marks = marks;
+		this.notoriety = notoriety;
 	}
 
 	public Integer getId() {
@@ -90,17 +207,42 @@ public class User {
 		this.password = password;
 	}
 
-	public Integer getFacultyId() {
-		return facultyId;
+	public String getPasswordConfirm() {
+		return passwordConfirm;
 	}
 
-	public void setFacultyId(Integer facultyId) {
-		this.facultyId = facultyId;
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
+
+	public Faculty getFaculty() {
+		return faculty;
+	}
+
+	public void setFaculty(Faculty faculty) {
+		this.faculty = faculty;
+	}
+
+	public Marks getMarks() {
+		return marks;
+	}
+
+	public void setMarks(Marks marks) {
+		this.marks = marks;
+	}
+
+	public Notoriety getNotoriety() {
+		return notoriety;
+	}
+
+	public void setNotoriety(Notoriety notoriety) {
+		this.notoriety = notoriety;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, facultyId, firstName, id, lastName, password, userRole);
+		return Objects.hash(email, faculty, firstName, id, lastName, marks, notoriety, password, passwordConfirm,
+				userRole);
 	}
 
 	@Override
@@ -112,16 +254,18 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(email, other.email) && Objects.equals(facultyId, other.facultyId)
+		return Objects.equals(email, other.email) && Objects.equals(faculty, other.faculty)
 				&& Objects.equals(firstName, other.firstName) && Objects.equals(id, other.id)
-				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
-				&& userRole == other.userRole;
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(marks, other.marks)
+				&& Objects.equals(notoriety, other.notoriety) && Objects.equals(password, other.password)
+				&& Objects.equals(passwordConfirm, other.passwordConfirm) && userRole == other.userRole;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", userRole=" + userRole + ", password=" + password + ", facultyId=" + facultyId + "]";
+				+ ", userRole=" + userRole + ", password=" + password + ", passwordConfirm=" + passwordConfirm
+				+ ", faculty=" + faculty + ", marks=" + marks + ", notoriety=" + notoriety + "]";
 	}
 
 }
