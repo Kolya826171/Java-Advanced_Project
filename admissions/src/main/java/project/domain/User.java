@@ -59,7 +59,6 @@ public class User {
 
 	public User(String firstName, String lastName, String email, UserRole userRole, String password,
 			String passwordConfirm) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -81,7 +80,6 @@ public class User {
 
 	public User(String firstName, String lastName, String email, UserRole userRole, String password,
 			String passwordConfirm, Faculty faculty, Marks marks) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -94,7 +92,6 @@ public class User {
 	
 	public User(String firstName, String lastName, String email, UserRole userRole, String password,
 			String passwordConfirm, Faculty faculty, Marks marks, Notoriety notoriety) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -108,7 +105,6 @@ public class User {
 
 	public User(Integer id, String firstName, String lastName, String email, UserRole userRole, String password,
 			String passwordConfirm) {
-		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -132,7 +128,6 @@ public class User {
 
 	public User(Integer id, String firstName, String lastName, String email, UserRole userRole, String password,
 			String passwordConfirm, Faculty faculty, Marks marks) {
-		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -146,7 +141,6 @@ public class User {
 
 	public User(Integer id, String firstName, String lastName, String email, UserRole userRole, String password,
 			String passwordConfirm, Faculty faculty, Marks marks, Notoriety notoriety) {
-		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -157,6 +151,19 @@ public class User {
 		this.faculty = faculty;
 		this.marks = marks;
 		this.notoriety = notoriety;
+	}
+	
+	public User(User user) {
+		this.id = user.id;
+		this.firstName = user.firstName;
+		this.lastName = user.lastName;
+		this.email = user.email;
+		this.userRole = user.userRole;
+		this.password = user.password;
+		this.passwordConfirm = user.passwordConfirm;
+		this.faculty = user.faculty;
+		this.marks = user.marks;
+		this.notoriety = user.notoriety;
 	}
 
 	public Integer getId() {

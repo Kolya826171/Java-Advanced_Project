@@ -1,5 +1,5 @@
 package project.domain;
 
 public enum UserRole {
-	ADMINISTRATOR, ENTRANT;
+	ROLE_ADMIN, ROLE_USER;
 }
