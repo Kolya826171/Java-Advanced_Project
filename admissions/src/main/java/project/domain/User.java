@@ -44,13 +44,13 @@ public class User {
 	@Transient
 	private String passwordConfirm;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "faculty_id", referencedColumnName = "id")
 	private Faculty faculty;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Marks marks;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Notoriety notoriety;
 
@@ -89,7 +89,7 @@ public class User {
 		this.faculty = faculty;
 		this.marks = marks;
 	}
-	
+
 	public User(String firstName, String lastName, String email, UserRole userRole, String password,
 			String passwordConfirm, Faculty faculty, Marks marks, Notoriety notoriety) {
 		this.firstName = firstName;
@@ -152,7 +152,7 @@ public class User {
 		this.marks = marks;
 		this.notoriety = notoriety;
 	}
-	
+
 	public User(User user) {
 		this.id = user.id;
 		this.firstName = user.firstName;
@@ -248,8 +248,7 @@ public class User {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, faculty, firstName, id, lastName, marks, notoriety, password, passwordConfirm,
-				userRole);
+		return Objects.hash(email, firstName, id, lastName, password, userRole);
 	}
 
 	@Override

@@ -24,29 +24,33 @@ public class Faculty {
 	@Column
 	private String name;
 
-	@Column(name = "goverment_places")
-	private Integer numberOfGovermentOrders;
+	@Column(name = "government_places")
+	private Integer numberOfGovernmentOrders;
 
 	@Column(name = "contract_places")
 	private Integer numberOfContractPlaces;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL,CascadeType.PERSIST,CascadeType.MERGE }, mappedBy = "faculty")
-	@Column
+	@Column(nullable = true)
 	private Set<User> users;
 	
 	public Faculty() {
 	}
 
-	public Faculty(String name, Integer numberOfGovermentOrders, Integer numberOfContractPlaces) {
+	public Faculty(String name, Integer numberOfGovernmentOrders, Integer numberOfContractPlaces) {
 		this.name = name;
-		this.numberOfGovermentOrders = numberOfGovermentOrders;
+		this.numberOfGovernmentOrders = numberOfGovernmentOrders;
 		this.numberOfContractPlaces = numberOfContractPlaces;
 	}
+	
+	public Faculty(Integer id) {
+		this.id = id;
+	}
 
-	public Faculty(Integer id, String name, Integer numberOfGovermentOrders, Integer numberOfContractPlaces) {
+	public Faculty(Integer id, String name, Integer numberOfGovernmentOrders, Integer numberOfContractPlaces) {
 		this.id = id;
 		this.name = name;
-		this.numberOfGovermentOrders = numberOfGovermentOrders;
+		this.numberOfGovernmentOrders = numberOfGovernmentOrders;
 		this.numberOfContractPlaces = numberOfContractPlaces;
 	}
 
@@ -66,12 +70,12 @@ public class Faculty {
 		this.name = name;
 	}
 
-	public Integer getNumberOfGovermentOrders() {
-		return numberOfGovermentOrders;
+	public Integer getNumberOfGovernmentOrders() {
+		return numberOfGovernmentOrders;
 	}
 
-	public void setNumberOfGovermentOrders(Integer numberOfGovermentOrders) {
-		this.numberOfGovermentOrders = numberOfGovermentOrders;
+	public void setNumberOfGovernmentOrders(Integer numberOfGovernmentOrders) {
+		this.numberOfGovernmentOrders = numberOfGovernmentOrders;
 	}
 
 	public Integer getNumberOfContractPlaces() {
@@ -92,7 +96,7 @@ public class Faculty {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, numberOfContractPlaces, numberOfGovermentOrders, users);
+		return Objects.hash(id, name, numberOfContractPlaces, numberOfGovernmentOrders, users);
 	}
 
 	@Override
@@ -106,13 +110,13 @@ public class Faculty {
 		Faculty other = (Faculty) obj;
 		return Objects.equals(id, other.id) && Objects.equals(name, other.name)
 				&& Objects.equals(numberOfContractPlaces, other.numberOfContractPlaces)
-				&& Objects.equals(numberOfGovermentOrders, other.numberOfGovermentOrders)
+				&& Objects.equals(numberOfGovernmentOrders, other.numberOfGovernmentOrders)
 				&& Objects.equals(users, other.users);
 	}
 
 	@Override
 	public String toString() {
-		return "Faculty [id=" + id + ", name=" + name + ", numberOfGovermentOrders=" + numberOfGovermentOrders
+		return "Faculty [id=" + id + ", name=" + name + ", numberOfGovermentOrders=" + numberOfGovernmentOrders
 				+ ", numberOfContractPlaces=" + numberOfContractPlaces + ", users=" + users + "]";
 	}
 
