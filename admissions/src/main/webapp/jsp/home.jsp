@@ -12,28 +12,85 @@
 <meta charset="UTF-8">
 
 <title>Home</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
 
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+	crossorigin="anonymous">
 </head>
 <body>
-	<div>
-	
-		<c:if test="${pageContext.request.userPrincipal.name != null}">
-		
-			<form id="logoutForm" method="POST" action="${contextPath}/logout">
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
-			</form>
 
-			<h1>
-				Welcome ${pageContext.request.userPrincipal.name} <br> <a
-					onclick="document.forms['logoutForm'].submit()"> Logout</a>
-			</h1>
+	<jsp:include page="header.jsp"></jsp:include>
+
+	<div class="container-fluid">
+
+
+		<div>
+			<c:if test="${pageContext.request.userPrincipal.name != null}">
+
+				<form id="logoutForm" method="POST" action="${contextPath}/logout">
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+				</form>
+				<h1>
+					Welcome ${pageContext.request.userPrincipal.name} <br> <a
+						onclick="document.forms['logoutForm'].submit()"> Logout</a>
+				</h1>
+			</c:if>
+		</div>
+
+		<c:if test="${not empty users}">
+			<c:forEach items="${users}" var="user">
+
+				<div class="card" style="width: 20%;">
+					<!-- Треба вивести коистувачів -->
+					<div class="card-body">
+						<h5 class="card-title">${user.firstName} ${user.lastName}</h5>
+						<p class="card-text">${user.email}</p>
+					</div>
+
+				</div>
+			</c:forEach>
 		</c:if>
 
 	</div>
 
+	<!-- 				<div class="row"> -->
+	<!-- 					<div id="booksCards"> -->
+	<!-- 						<div class="col"> -->
+	<!-- 							<div class="card"> -->
+	<!-- 								<div class="card-body"> -->
+	<%-- 									<h5 class="card-title">${faculty.name}</h5> --%>
+	<!-- 									<p class="card-text">Government Places: -->
+	<%-- 										${faculty.numberOfGovernmentOrders}</p> --%>
+	<!-- 									<p class="card-text">Contract Places: -->
+	<%-- 										${faculty.numberOfContractPlaces}</p> --%>
+	<!-- 									<a href="book?id='  value.id '" class="card-link">link</a> -->
+	<!-- 								</div> -->
+	<!-- 							</div> -->
+	<!-- 						</div> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js"
+		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
+	<script src="js/header.js"></script>
 </body>
 </html>
