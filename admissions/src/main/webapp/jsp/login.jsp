@@ -35,9 +35,8 @@
 				<span>${message}</span> 
 				<input type="text" id="login" class="fadeIn second" name="email" placeholder="Email" /> 
 				<input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" /> 
-				<span>${error}</span> 
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
+				<br> <span>${error}</span> 
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 				<input type="submit" class="fadeIn fourth" value="Sign In" />
 				<h4 class="text-center">
 					<a href="${contextPath}/registration">Create an account</a>

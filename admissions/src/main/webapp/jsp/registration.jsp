@@ -31,49 +31,25 @@
 	<div class="wrapper fadeInDown">
 		<div id="formContent">
 
-			<form:form method="post" modelAttribute="userForm"
-				class="form-signin">
+			<form:form method="post" class="form-signin"
+				enctype="multipart/form-data">
 				<h2 class="form-signin-heading">Create an account</h2>
 
-				<spring:bind path="firstName">
-					<div class="form-group ${status.error ? 'has-error' : ''}">
-						<form:input path="firstName" type="text" class="fadeIn"
-							placeholder="First name" />
-						<form:errors path="firstName"></form:errors>
-					</div>
-				</spring:bind>
+				<input type="text" class="fadeIn" placeholder="First name"
+					name="firstName" />
 
-				<spring:bind path="lastName">
-					<div class="form-group ${status.error ? 'has-error' : ''}">
-						<form:input path="lastName" type="text" class="fadeIn"
-							placeholder="Last name" />
-						<form:errors path="lastName"></form:errors>
-					</div>
-				</spring:bind>
+				<input type="text" class="fadeIn" placeholder="Last name"
+					name="lastName" />
 
-				<spring:bind path="email">
-					<div class="form-group ${status.error ? 'has-error' : ''}">
-						<form:input path="email" type="text" class="fadeIn"
-							placeholder="Email" />
-						<form:errors path="email"></form:errors>
-					</div>
-				</spring:bind>
+				<input type="text" class="fadeIn" placeholder="Email" name="email" />
 
-				<spring:bind path="password">
-					<div class="form-group ${status.error ? 'has-error' : ''}">
-						<form:input path="password" type="password" class="fadeIn"
-							placeholder="Password" />
-						<form:errors path="password"></form:errors>
-					</div>
-				</spring:bind>
+				<input type="password" class="fadeIn" placeholder="Password"
+					name="password" />
 
-				<spring:bind path="passwordConfirm">
-					<div class="form-group ${status.error ? 'has-error' : ''}">
-						<form:input path="passwordConfirm" type="password" class="fadeIn"
-							placeholder="Confirm password" />
-						<form:errors path="passwordConfirm"></form:errors>
-					</div>
-				</spring:bind>
+				<input type="password" class="fadeIn" placeholder="Confirm password"
+					name="passwordConfirm" />
+
+				<input type="file" class="fadeIn" name="image" />
 
 				<input type="submit" class="fadeIn" value="Registration" />
 

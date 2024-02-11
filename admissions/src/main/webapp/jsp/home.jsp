@@ -47,9 +47,10 @@
 			<c:forEach items="${users}" var="user">
 
 				<div class="card" style="width: 20%;">
-					<!-- Треба вивести коистувачів -->
 					<div class="card-body">
-						<h5 class="card-title">${user.firstName} ${user.lastName}</h5>
+						<img src="data:image/jpg;base64, ${user.encodedImage}"
+							alt="User image" style="width: 100%">
+						<h5 class="card-title">${user.firstName}${user.lastName}</h5>
 						<p class="card-text">${user.email}</p>
 					</div>
 
@@ -58,23 +59,6 @@
 		</c:if>
 
 	</div>
-
-	<!-- 				<div class="row"> -->
-	<!-- 					<div id="booksCards"> -->
-	<!-- 						<div class="col"> -->
-	<!-- 							<div class="card"> -->
-	<!-- 								<div class="card-body"> -->
-	<%-- 									<h5 class="card-title">${faculty.name}</h5> --%>
-	<!-- 									<p class="card-text">Government Places: -->
-	<%-- 										${faculty.numberOfGovernmentOrders}</p> --%>
-	<!-- 									<p class="card-text">Contract Places: -->
-	<%-- 										${faculty.numberOfContractPlaces}</p> --%>
-	<!-- 									<a href="book?id='  value.id '" class="card-link">link</a> -->
-	<!-- 								</div> -->
-	<!-- 							</div> -->
-	<!-- 						</div> -->
-	<!-- 					</div> -->
-	<!-- 				</div> -->
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

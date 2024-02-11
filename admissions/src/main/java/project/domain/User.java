@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -44,6 +45,10 @@ public class User {
 	@Transient
 	private String passwordConfirm;
 
+	@Lob
+	@Column(columnDefinition = "LONGBLOB")
+	private String encodedImage;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "faculty_id", referencedColumnName = "id")
 	private Faculty faculty;
@@ -55,6 +60,10 @@ public class User {
 	private Notoriety notoriety;
 
 	public User() {
+	}
+
+	public User(Integer id) {
+		this.id = id;
 	}
 
 	public User(String firstName, String lastName, String email, UserRole userRole, String password,
@@ -244,6 +253,14 @@ public class User {
 
 	public void setNotoriety(Notoriety notoriety) {
 		this.notoriety = notoriety;
+	}
+
+	public String getEncodedImage() {
+		return encodedImage;
+	}
+
+	public void setEncodedImage(String encodedImage) {
+		this.encodedImage = encodedImage;
 	}
 
 	@Override
