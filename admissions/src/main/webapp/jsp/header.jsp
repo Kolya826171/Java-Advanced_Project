@@ -16,16 +16,23 @@
 					href="${contextPath}/home">Home <span class="sr-only">(current)</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="${contextPath}/createFaculty">Add faculty(ADMIN only)</a></li>
+					href="${contextPath}/createFaculty">Add faculty</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="${contextPath}/registrationFaculty">Registration at the faculty</a></li>
+					href="${contextPath}/registrationFaculty">Registration at the
+						faculty</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="${contextPath}/usersMarks">Add to notoriety</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="${contextPath}/notoriety">Notoriety</a></li>
 			</ul>
 
 			<ul class="navbar-nav ml-md-auto d-md-flex">
 				<li class="nav-item">
 					<form method="POST" action="/logout">
 						<input type="submit" class="btn btn-secondary logout"
-							value="LogOut" />
+							value="LogOut" /> 
+						<input type="hidden" name="${_csrf.parameterName}" 
+							value="${_csrf.token}" />
 					</form>
 				</li>
 			</ul>

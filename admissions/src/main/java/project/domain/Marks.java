@@ -1,6 +1,7 @@
 package project.domain;
 
 import java.util.Objects;
+import java.util.stream.DoubleStream;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,6 +28,9 @@ public class Marks {
 	@Column
 	private Integer certificate;
 
+	@Column
+	private Boolean inNotoriety;
+
 	@OneToOne(mappedBy = "marks")
 	private User user;
 
@@ -37,6 +41,14 @@ public class Marks {
 		this.exam = exam;
 		this.interview = interview;
 		this.certificate = certificate;
+		this.user = user;
+	}
+
+	public Marks(Integer exam, Integer interview, Integer certificate, Boolean inNotoriety, User user) {
+		this.exam = exam;
+		this.interview = interview;
+		this.certificate = certificate;
+		this.inNotoriety = inNotoriety;
 		this.user = user;
 	}
 
@@ -80,6 +92,14 @@ public class Marks {
 		this.certificate = certificate;
 	}
 
+	public Boolean isInNotoriety() {
+		return inNotoriety;
+	}
+
+	public void setInNotoriety(Boolean inNotoriety) {
+		this.inNotoriety = inNotoriety;
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -90,7 +110,7 @@ public class Marks {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(certificate, exam, id, interview, user);
+		return Objects.hash(certificate, exam, id, inNotoriety, interview, user);
 	}
 
 	@Override
@@ -103,14 +123,18 @@ public class Marks {
 			return false;
 		Marks other = (Marks) obj;
 		return Objects.equals(certificate, other.certificate) && Objects.equals(exam, other.exam)
-				&& Objects.equals(id, other.id) && Objects.equals(interview, other.interview)
-				&& Objects.equals(user, other.user);
+				&& Objects.equals(id, other.id) && inNotoriety == other.inNotoriety
+				&& Objects.equals(interview, other.interview) && Objects.equals(user, other.user);
 	}
 
 	@Override
 	public String toString() {
 		return "Marks [id=" + id + ", exam=" + exam + ", interview=" + interview + ", certificate=" + certificate
-				+ ", user=" + user + "]";
+				+ ", inNotoriety=" + inNotoriety + ", user=" + user + "]";
+	}
+
+	public Double getAvgPoint() {
+		return DoubleStream.of(exam, interview, certificate).average().getAsDouble();
 	}
 
 }

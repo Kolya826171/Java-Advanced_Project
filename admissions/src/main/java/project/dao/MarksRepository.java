@@ -8,4 +8,5 @@ import project.domain.Marks;
 @Repository
 public interface MarksRepository extends JpaRepository<Marks, Integer> {
 
+
 }

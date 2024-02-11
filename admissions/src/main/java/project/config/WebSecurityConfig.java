@@ -46,6 +46,9 @@ public class WebSecurityConfig {
 						.requestMatchers("/home").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
 						.requestMatchers("/createFaculty").hasAuthority("ROLE_ADMIN")
 						.requestMatchers("/registrationFaculty").hasAuthority("ROLE_USER")
+						.requestMatchers("/marks").hasAuthority("ROLE_USER")
+						.requestMatchers("/usersMarks").hasAuthority("ROLE_ADMIN")
+						.requestMatchers("/notoriety").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
 						.anyRequest().permitAll())
 
 				.formLogin((form) -> form.loginPage("/login").usernameParameter("email").passwordParameter("password")

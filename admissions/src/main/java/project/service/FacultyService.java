@@ -25,4 +25,8 @@ public class FacultyService {
 	public Faculty findById(Integer id) {
 		return facultyRepo.findById(id).get();
 	}
+	
+	public Faculty findByName(String name) {
+		return facultyRepo.findByName(name);
+	}
 }
