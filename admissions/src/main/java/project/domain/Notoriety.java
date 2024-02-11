@@ -21,8 +21,8 @@ public class Notoriety {
 	@Column(name = "average_point")
 	private Double averagePoint;
 	
-	@Column(name = "faculty_id")
-	private Integer facultyId;
+	@Column(name = "faculty_name")
+	private String facultyName;
 
 	@OneToOne(mappedBy = "notoriety")
 	private User user;
@@ -30,17 +30,17 @@ public class Notoriety {
 	public Notoriety() {
 	}
 
-	public Notoriety(User user, Double averagePoint, Integer facultyId) {
+	public Notoriety(User user, Double averagePoint, String facultyName) {
 		this.user = user;
 		this.averagePoint = averagePoint;
-		this.facultyId = facultyId;
+		this.facultyName = facultyName;
 	}
 
-	public Notoriety(Integer id, User user, Double averagePoint, Integer facultyId) {
+	public Notoriety(Integer id, User user, Double averagePoint, String facultyName) {
 		this.id = id;
 		this.user = user;
 		this.averagePoint = averagePoint;
-		this.facultyId = facultyId;
+		this.facultyName = facultyName;
 	}
 
 	public Integer getId() {
@@ -67,17 +67,17 @@ public class Notoriety {
 		this.averagePoint = averagePoint;
 	}
 
-	public Integer getFacultyId() {
-		return facultyId;
+	public String getFacultyName() {
+		return facultyName;
 	}
 
-	public void setFacultyId(Integer facultyId) {
-		this.facultyId = facultyId;
+	public void setFacultyName(String facultyName) {
+		this.facultyName = facultyName;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(averagePoint, facultyId, id, user);
+		return Objects.hash(averagePoint, facultyName, id, user);
 	}
 
 	@Override
@@ -89,14 +89,14 @@ public class Notoriety {
 		if (getClass() != obj.getClass())
 			return false;
 		Notoriety other = (Notoriety) obj;
-		return Objects.equals(averagePoint, other.averagePoint) && Objects.equals(facultyId, other.facultyId)
+		return Objects.equals(averagePoint, other.averagePoint) && Objects.equals(facultyName, other.facultyName)
 				&& Objects.equals(id, other.id) && Objects.equals(user, other.user);
 	}
 
 	@Override
 	public String toString() {
-		return "Notoriety [id=" + id + ", user=" + user + ", averagePoint=" + averagePoint + ", facultyId=" + facultyId
-				+ "]";
+		return "Notoriety [id=" + id + ", averagePoint=" + averagePoint + ", facultyName=" + facultyName + ", user="
+				+ user + "]";
 	}
 
 }
