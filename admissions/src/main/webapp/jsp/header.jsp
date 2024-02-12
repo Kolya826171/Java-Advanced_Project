@@ -1,3 +1,6 @@
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+
 <link rel="stylesheet" href="css/header.css">
 
 <div id="wrapper" class="animate">
@@ -12,16 +15,28 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav animate side-nav">
+
+
 				<li class="nav-item"><a class="nav-link"
 					href="${contextPath}/home">Home <span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="${contextPath}/createFaculty">Add faculty</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="${contextPath}/registrationFaculty">Registration at the
-						faculty</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="${contextPath}/usersMarks">Add to notoriety</a></li>
+
+				<security:authorize access="hasRole('ROLE_ADMIN')">
+					<li class="nav-item"><a class="nav-link"
+						href="${contextPath}/createFaculty">Add faculty</a></li>
+				</security:authorize>
+
+				<security:authorize access="hasRole('ROLE_USER')">
+					<li class="nav-item"><a class="nav-link"
+						href="${contextPath}/registrationFaculty">Registration at the
+							faculty</a></li>
+				</security:authorize>
+
+				<security:authorize access="hasRole('ROLE_ADMIN')">
+					<li class="nav-item"><a class="nav-link"
+						href="${contextPath}/usersMarks">Add to notoriety</a></li>
+				</security:authorize>
+
 				<li class="nav-item"><a class="nav-link"
 					href="${contextPath}/notoriety">Notoriety</a></li>
 			</ul>
@@ -30,9 +45,8 @@
 				<li class="nav-item">
 					<form method="POST" action="/logout">
 						<input type="submit" class="btn btn-secondary logout"
-							value="LogOut" /> 
-						<input type="hidden" name="${_csrf.parameterName}" 
-							value="${_csrf.token}" />
+							value="LogOut" /> <input type="hidden"
+							name="${_csrf.parameterName}" value="${_csrf.token}" />
 					</form>
 				</li>
 			</ul>

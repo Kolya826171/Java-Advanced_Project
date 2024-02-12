@@ -3,6 +3,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 
 <c:set var="contextPath" value="${pagePath.request.contextPath}" />
 
@@ -31,8 +33,8 @@
 
 		<form action="${contextPath}/filter" method="post">
 			<div class="form-group">
-				<label for="facultyName">Faculty:</label> <select class="form-control"
-					id="facultyName" name="facultyName">
+				<label for="facultyName">Faculty:</label> <select
+					class="form-control" id="facultyName" name="facultyName">
 					<option value="All" name="facultyName">All faculties</option>
 					<c:forEach var="curFaculty" items="${faculties}">
 						<option value="${curFaculty.name}" name="facultyName">${curFaculty.name}</option>
@@ -51,7 +53,9 @@
 					<th>Email</th>
 					<th>User Faculty</th>
 					<th>Average Point</th>
-					<th>Action</th>
+					<security:authorize access="hasRole('ROLE_ADMIN')">
+						<th>Action</th>
+					</security:authorize>
 				</tr>
 			</thead>
 			<tbody>
@@ -62,7 +66,9 @@
 						<td>${notoriety.email}</td>
 						<td>${notoriety.facultyName}</td>
 						<td>${notoriety.averagePoint}</td>
-						<td><a href="deleteNotoriety?id=${notoriety.id}">Delete</a></td>
+						<security:authorize access="hasRole('ROLE_ADMIN')">
+							<td><a href="deleteNotoriety?id=${notoriety.id}">Delete</a></td>
+						</security:authorize>
 					</tr>
 				</c:forEach>
 			</tbody>

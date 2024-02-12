@@ -3,7 +3,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+	
 <c:set var="contextPath" value="${pagePath.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -27,21 +29,6 @@
 	<jsp:include page="header.jsp"></jsp:include>
 
 	<div class="container-fluid">
-
-
-		<div>
-			<c:if test="${pageContext.request.userPrincipal.name != null}">
-
-				<form id="logoutForm" method="POST" action="${contextPath}/logout">
-					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" />
-				</form>
-				<h1>
-					Welcome ${pageContext.request.userPrincipal.name} <br> <a
-						onclick="document.forms['logoutForm'].submit()"> Logout</a>
-				</h1>
-			</c:if>
-		</div>
 
 		<c:if test="${not empty users}">
 			<c:forEach items="${users}" var="user">
