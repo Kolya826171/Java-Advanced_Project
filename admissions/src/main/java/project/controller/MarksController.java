@@ -44,7 +44,7 @@ public class MarksController {
 		String email = auth.getName();
 		User user = userService.findByEmail(email);
 		user.setMarks(marks);
-		
+		user.setNotoriety(null);
 		userService.save(user, user.getPassword());
 		
 		return "redirect:/home";

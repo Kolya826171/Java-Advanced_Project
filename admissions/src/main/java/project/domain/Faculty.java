@@ -117,7 +117,7 @@ public class Faculty {
 	@Override
 	public String toString() {
 		return "Faculty [id=" + id + ", name=" + name + ", numberOfGovermentOrders=" + numberOfGovernmentOrders
-				+ ", numberOfContractPlaces=" + numberOfContractPlaces + ", users=" + users + "]";
+				+ ", numberOfContractPlaces=" + numberOfContractPlaces + "]";
 	}
 
 }

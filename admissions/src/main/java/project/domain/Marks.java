@@ -130,7 +130,7 @@ public class Marks {
 	@Override
 	public String toString() {
 		return "Marks [id=" + id + ", exam=" + exam + ", interview=" + interview + ", certificate=" + certificate
-				+ ", inNotoriety=" + inNotoriety + ", user=" + user + "]";
+				+ ", inNotoriety=" + inNotoriety + "]";
 	}
 
 	public Double getAvgPoint() {

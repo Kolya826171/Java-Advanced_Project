@@ -95,8 +95,7 @@ public class Notoriety {
 
 	@Override
 	public String toString() {
-		return "Notoriety [id=" + id + ", averagePoint=" + averagePoint + ", facultyName=" + facultyName + ", user="
-				+ user + "]";
+		return "Notoriety [id=" + id + ", averagePoint=" + averagePoint + ", facultyName=" + facultyName + "]";
 	}
 
 }

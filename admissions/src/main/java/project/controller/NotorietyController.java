@@ -56,7 +56,8 @@ public class NotorietyController {
 	@RequestMapping(value = "/notoriety", method = RequestMethod.GET)
 	public ModelAndView notoriety() {
 		
-		return getNotoriety(NotorietyDTOHelper.createList(userService.findWithNotoriety()));
+		List<NotorietyDTO> attributeValue = NotorietyDTOHelper.createList(userService.findWithNotoriety());
+		return getNotoriety(attributeValue.reversed());
 	}
 	
 	@RequestMapping(value = "/deleteNotoriety", method = RequestMethod.GET)
@@ -66,7 +67,8 @@ public class NotorietyController {
 		user.setNotoriety(null);
 		notorietyService.delete(notoriety);
 		
-		return getNotoriety(NotorietyDTOHelper.createList(userService.findWithNotoriety()));
+		List<NotorietyDTO> attributeValue = NotorietyDTOHelper.createList(userService.findWithNotoriety());
+		return getNotoriety(attributeValue.reversed());
 	}
 	
 	@RequestMapping(value = "/filter", method = RequestMethod.POST)
