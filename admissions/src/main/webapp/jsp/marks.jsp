@@ -28,6 +28,10 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 
+	<spring:message code="marks.exam" var="exam" />
+	<spring:message code="marks.interview" var="interview" />
+	<spring:message code="marks.certificate" var="certificate" />
+
 
 
 	<div class="wrapper fadeInDown">
@@ -35,12 +39,14 @@
 
 			<form:form method="post" modelAttribute="marksForm"
 				class="form-signin">
-				<h2 class="form-signin-heading">Enter your marks</h2>
+				<h2 class="form-signin-heading">
+					<spring:message code="marks.title" />
+				</h2>
 
 				<spring:bind path="exam">
 					<div class="form-group ${status.error ? 'has-error' : ''}">
 						<form:input path="exam" type="number" class="fadeIn"
-							placeholder="Exam mark" />
+							placeholder="${exam}" />
 						<form:errors path="exam"></form:errors>
 					</div>
 				</spring:bind>
@@ -48,7 +54,7 @@
 				<spring:bind path="interview">
 					<div class="form-group ${status.error ? 'has-error' : ''}">
 						<form:input path="interview" type="number" class="fadeIn"
-							placeholder="Interview mark" />
+							placeholder="${interview}" />
 						<form:errors path="interview"></form:errors>
 					</div>
 				</spring:bind>
@@ -56,12 +62,14 @@
 				<spring:bind path="certificate">
 					<div class="form-group ${status.error ? 'has-error' : ''}">
 						<form:input path="certificate" type="number" class="fadeIn"
-							placeholder="Certificate mark" />
+							placeholder="${certificate}" />
 						<form:errors path="certificate"></form:errors>
 					</div>
 				</spring:bind>
+				<span>${error}</span>
 
-				<input type="submit" class="fadeIn submit" value="Enter" />
+				<input type="submit" class="fadeIn submit"
+					value="<spring:message code="marks.enter" />" />
 			</form:form>
 
 		</div>

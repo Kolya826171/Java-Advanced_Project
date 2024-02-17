@@ -36,7 +36,11 @@ public class NotorietyController {
 	private NotorietyService notorietyService;
 
 	@RequestMapping(value = "/addToNotoriety", method = RequestMethod.GET)
-	public String toNotoriety(@RequestParam String id) {
+	public String toNotoriety(@RequestParam String id) throws Exception {
+		if (id == null) {
+			throw new Exception("id is null in toNotoriety.");
+		}
+		
 		User user = userService.findById(Integer.parseInt(id));
 
 		Marks marks = user.getMarks();
@@ -61,7 +65,11 @@ public class NotorietyController {
 	}
 	
 	@RequestMapping(value = "/deleteNotoriety", method = RequestMethod.GET)
-	public ModelAndView delete(@RequestParam String id) {
+	public ModelAndView delete(@RequestParam String id) throws Exception {
+		if (id == null) {
+			throw new Exception("id is null in delete.");
+		}
+		
 		User user = userService.findById(Integer.parseInt(id));
 		Notoriety notoriety = user.getNotoriety();
 		user.setNotoriety(null);

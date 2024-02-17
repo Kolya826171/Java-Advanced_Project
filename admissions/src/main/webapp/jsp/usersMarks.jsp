@@ -32,14 +32,14 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
-					<th>User Faculty</th>
-					<th>Exam Mark</th>
-					<th>Interview Mark</th>
-					<th>Certificate Mark</th>
-					<th>Action</th>
+					<th><spring:message code="users_marks.first_name" /></th>
+					<th><spring:message code="users_marks.last_name" /></th>
+					<th><spring:message code="users_marks.email" /></th>
+					<th><spring:message code="users_marks.user_faculty" /></th>
+					<th><spring:message code="users_marks.exam" /></th>
+					<th><spring:message code="users_marks.interview" /></th>
+					<th><spring:message code="users_marks.certificate" /></th>
+					<th><spring:message code="users_marks.action" /></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -51,9 +51,9 @@
 						<td>${user.facultyName}</td>
 						<td>${user.exam}</td>
 						<td>${user.interview}</td>
-						<td>${user.certificate}</td>	
-						<td>
-						<a href="addToNotoriety?id=${user.id}">Add to notoriety</a></td>
+						<td>${user.certificate}</td>
+						<td><a href="addToNotoriety?id=${user.id}"><spring:message
+									code="users_marks.to_notoriety" /></a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

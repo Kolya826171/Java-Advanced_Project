@@ -33,30 +33,42 @@
 
 			<form:form method="post" class="form-signin"
 				enctype="multipart/form-data">
-				<h2 class="form-signin-heading">Create an account</h2>
+				<h2 class="form-signin-heading">
+					<spring:message code="registration.title" />
+				</h2>
 
-				<input type="text" class="fadeIn" placeholder="First name"
+				<input type="text" class="fadeIn"
+					placeholder="<spring:message code="registration.first_name" />"
 					name="firstName" />
 
-				<input type="text" class="fadeIn" placeholder="Last name"
+				<input type="text" class="fadeIn"
+					placeholder="<spring:message code="registration.last_name" />"
 					name="lastName" />
 
-				<input type="text" class="fadeIn" placeholder="Email" name="email" />
+				<input type="text" class="fadeIn"
+					placeholder="<spring:message code="registration.email" />"
+					name="email" />
 
-				<input type="password" class="fadeIn" placeholder="Password"
+				<input type="password" class="fadeIn"
+					placeholder="<spring:message code="registration.password" />"
 					name="password" />
 
-				<input type="password" class="fadeIn" placeholder="Confirm password"
+				<input type="password" class="fadeIn"
+					placeholder="<spring:message code="registration.confirm_password" />"
 					name="passwordConfirm" />
 
 				<input type="file" class="fadeIn" name="image" />
 
-				<input type="submit" class="fadeIn" value="Registration" />
-
-				<h4 class="text-center">
-					<a href="${contextPath}/login">Already registered</a>
-				</h4>
+				<input type="submit" class="fadeIn"
+					value="<spring:message code="registration.registration" />" />
 			</form:form>
+			
+			<div id="formFooter">
+				<h4 class="text-center">
+					<a href="${contextPath}/login"><spring:message
+							code="registration.signin" /></a>
+				</h4>
+			</div>
 
 		</div>
 	</div>

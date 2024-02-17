@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,17 +22,21 @@
 		<div class="row">
 			<div class="col-md-2 text-center">
 				<p>
-					<i class="fa fa-exclamation-triangle fa-5x"></i><br />Status Code:
-					403
+					<i class="fa fa-exclamation-triangle fa-5x"></i><br />
+					<spring:message code="error403.code" />
 				</p>
 			</div>
 			<div class="col-md-10">
-				<h3>OPPSSS!!!! Sorry...</h3>
-				<p>You do not have permission to access this page!</p>
+				<h3>
+					<spring:message code="error403.ops" />
+				</h3>
+				<p>
+					<spring:message code="error403.explain" />
+				</p>
 				<form action="/logout" method="post">
 					<input type="submit" class="btn btn-danger"
-						value="Sign in as different user" /> <input type="hidden"
-						name="${_csrf.parameterName}" value="${_csrf.token}" />
+						value="<spring:message code="error403.logout" />" /> <input
+						type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>
 			</div>
 		</div>

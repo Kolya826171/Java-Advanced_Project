@@ -32,17 +32,34 @@
 		<div id="formContent">
 
 			<form action="${contextPath}/login" method="post">
-				<span>${message}</span> 
-				<input type="text" id="login" class="fadeIn second" name="email" placeholder="Email" /> 
-				<input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" /> 
-				<br> <span>${error}</span> 
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
-				<input type="submit" class="fadeIn fourth" value="Sign In" />
-				<h4 class="text-center">
-					<a href="${contextPath}/registration">Create an account</a>
-				</h4>
-
+				<span>${message}</span> <input type="text" id="login"
+					class="fadeIn second" name="email"
+					placeholder="<spring:message code="login.email"/>" /> <input
+					type="password" id="password" class="fadeIn third" name="password"
+					placeholder="<spring:message code="login.password"/>" /> <br>
+				<span>${error}</span> <input type="hidden"
+					name="${_csrf.parameterName}" value="${_csrf.token}" /> <input
+					type="submit" class="fadeIn fourth"
+					value="<spring:message code="login.signin"/>" />
 			</form>
+
+
+			<div>
+				<fieldset>
+					<label> <spring:message code="login.choose_lang"></spring:message>
+					</label> <select id="locales">
+						<option value="en"><spring:message code="login.english" /></option>
+						<option value="ua"><spring:message code="login.ukrainian" /></option>
+					</select>
+				</fieldset>
+			</div>
+
+			<div id="formFooter">
+				<h4 class="text-center">
+					<a href="${contextPath}/registration"><spring:message
+							code="login.create_account" /></a>
+				</h4>
+			</div>
 
 		</div>
 	</div>
@@ -58,5 +75,8 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+
+	<script src="js/language.js"></script>
+
 </body>
 </html>

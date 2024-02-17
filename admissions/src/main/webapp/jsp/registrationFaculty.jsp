@@ -35,10 +35,14 @@
 				<div class="card" style="width: 20%;">
 					<div class="card-body">
 						<h5 class="card-title">${faculty.name}</h5>
-						<p class="card-text">Government Places:
-							${faculty.numberOfGovernmentOrders}</p>
-						<p class="card-text">Contract Places:
-							${faculty.numberOfContractPlaces}</p>
+						<p class="card-text">
+							<spring:message code="registration_faculty.govermnet_order" />
+							${faculty.numberOfGovernmentOrders}
+						</p>
+						<p class="card-text">
+							<spring:message code="registration_faculty.contract_place" />
+							${faculty.numberOfContractPlaces}
+						</p>
 
 						<form:form id="joinForm" action="${contextPath}/joinFaculty"
 							method="post" enctype="multipart/form-data"
@@ -46,7 +50,7 @@
 							<input type="hidden" value="${faculty.id}" class="form-control"
 								name="facultyId">
 							<input type="submit" class="btn btn-secondary"
-								value="Join faculty">
+								value="<spring:message code="registration_faculty.join_faculty" />">
 						</form:form>
 
 					</div>

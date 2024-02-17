@@ -33,8 +33,9 @@
 
 		<form action="${contextPath}/filter" method="post">
 			<div class="form-group">
-				<label for="facultyName">Faculty:</label> <select
-					class="form-control" id="facultyName" name="facultyName">
+				<label for="facultyName"><spring:message
+						code="notoriety.sort_faculty" /></label> <select class="form-control"
+					id="facultyName" name="facultyName">
 					<option value="All" name="facultyName">All faculties</option>
 					<c:forEach var="curFaculty" items="${faculties}">
 						<option value="${curFaculty.name}" name="facultyName">${curFaculty.name}</option>
@@ -42,19 +43,20 @@
 
 				</select>
 			</div>
-			<input type="submit" class="btn btn-secondary" value="Filter" />
+			<input type="submit" class="btn btn-secondary"
+				value="<spring:message code="notoriety.filter" />" />
 		</form>
 
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
-					<th>User Faculty</th>
-					<th>Average Point</th>
+					<th><spring:message code="notoriety.first_name" /></th>
+					<th><spring:message code="notoriety.last_name" /></th>
+					<th><spring:message code="notoriety.email" /></th>
+					<th><spring:message code="notoriety.faculty" /></th>
+					<th><spring:message code="notoriety.avg_point" /></th>
 					<security:authorize access="hasRole('ROLE_ADMIN')">
-						<th>Action</th>
+						<th><spring:message code="notoriety.action" /></th>
 					</security:authorize>
 				</tr>
 			</thead>
@@ -67,7 +69,8 @@
 						<td>${notoriety.facultyName}</td>
 						<td>${notoriety.averagePoint}</td>
 						<security:authorize access="hasRole('ROLE_ADMIN')">
-							<td><a href="deleteNotoriety?id=${notoriety.id}">Delete</a></td>
+							<td><a href="deleteNotoriety?id=${notoriety.id}"><spring:message
+										code="notoriety.delete" /></a></td>
 						</security:authorize>
 					</tr>
 				</c:forEach>

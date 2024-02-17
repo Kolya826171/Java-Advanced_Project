@@ -22,34 +22,38 @@ public class MarksController {
 
 	@Autowired
 	private MarksService marksService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping(value = "/marks", method = RequestMethod.GET)
-	public String enterMarks(Model model) {
+	public String enterMarks(Model model) throws Exception {
+
+		if (model == null) {
+			throw new Exception("model is null in enterMarks.");
+		}
 		model.addAttribute("marksForm", new Marks());
-		
+
 		return "marks";
 	}
-	
+
 	@RequestMapping(value = "/marks", method = RequestMethod.POST)
 	public String enterMarks(@ModelAttribute("userForm") Marks marks, BindingResult bindingResult, Model model) {
-		
+
 		if (bindingResult.hasErrors()) {
 			return "marks";
 		}
-		
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String email = auth.getName();
 		User user = userService.findByEmail(email);
 		user.setMarks(marks);
 		user.setNotoriety(null);
 		userService.save(user, user.getPassword());
-		
+
 		return "redirect:/home";
 	}
-	
+
 	@RequestMapping(value = "/usersMarks", method = RequestMethod.GET)
 	public ModelAndView usersMarks() {
 		ModelAndView map = new ModelAndView("usersMarks");
@@ -57,6 +61,5 @@ public class MarksController {
 
 		return map;
 	}
-	
-	
+
 }

@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
-	
+
 <c:set var="contextPath" value="${pagePath.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
 					<div class="card-body">
 						<img src="data:image/jpg;base64, ${user.encodedImage}"
 							alt="User image" style="width: 100%">
-						<h5 class="card-title">${user.firstName}${user.lastName}</h5>
+						<h5 class="card-title">${user.firstName} ${user.lastName}</h5>
 						<p class="card-text">${user.email}</p>
 					</div>
 

@@ -3,7 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-	
+
 <c:set var="contextPath" value="${pagePath.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -28,6 +28,11 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 
+	<spring:message code="create_faculty.faculty_name" var="faculty_name" />
+	<spring:message code="create_faculty.govermnet_order"
+		var="govermnet_order" />
+	<spring:message code="create_faculty.contract_place"
+		var="contract_place" />
 
 
 	<div class="wrapper fadeInDown">
@@ -35,33 +40,31 @@
 
 			<form:form method="post" modelAttribute="facultyForm"
 				class="form-signin" action="${contextPath}/createFaculty">
-				<h2 class="form-signin-heading">Create an account</h2>
-
+				<h2 class="form-signin-heading">
+					<spring:message code="create_faculty.title" />
+				</h2>
 
 				<div class="form-group ${status.error ? 'has-error' : ''}">
-					<form:input path="name" type="text" class="fadeIn"
-						placeholder="Faculty name" />
+					<form:input placeholder="${faculty_name}" path="name" type="text"
+						class="fadeIn" />
 					<form:errors path="name"></form:errors>
 				</div>
 
-
-
 				<div class="form-group ${status.error ? 'has-error' : ''}">
 					<form:input path="numberOfGovernmentOrders" type="number"
-						class="fadeIn" placeholder="Number of government orders" />
+						class="fadeIn" placeholder="${govermnet_order}" />
 					<form:errors path="numberOfGovernmentOrders"></form:errors>
 				</div>
 
-
-
 				<div class="form-group ${status.error ? 'has-error' : ''}">
 					<form:input path="numberOfContractPlaces" type="number"
-						class="fadeIn" placeholder="Number of contract places" />
+						class="fadeIn" placeholder="${contract_place}" />
 					<form:errors path="numberOfContractPlaces"></form:errors>
 				</div>
 
-
-				<input type="submit" class="fadeIn submit" value="Create Faculty" />
+				<input type="submit" class="fadeIn submit"
+					value="<spring:message
+				code="create_faculty.create_faculty" />" />
 			</form:form>
 
 		</div>
