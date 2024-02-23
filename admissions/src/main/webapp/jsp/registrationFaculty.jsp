@@ -32,7 +32,7 @@
 
 		<c:if test="${not empty faculties}">
 			<c:forEach items="${faculties}" var="faculty">
-				<div class="card" style="width: 20%;">
+				<div class="card" style="width: 20%; float: left; margin: 2%">
 					<div class="card-body">
 						<h5 class="card-title">${faculty.name}</h5>
 						<p class="card-text">

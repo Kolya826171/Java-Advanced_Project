@@ -66,4 +66,10 @@ public class UserService {
 		logger.info("Get users {} by faculty_id: " + id + " and which have notoriety");
 		return userRepo.findByFacultyWithNotoriety(id);
 	}
+	
+	public List<User> findAll() {
+		logger.info("Get all users {}");
+		return userRepo.findAll();
+	}
+
 }

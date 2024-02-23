@@ -33,7 +33,7 @@
 		<c:if test="${not empty users}">
 			<c:forEach items="${users}" var="user">
 
-				<div class="card" style="width: 20%;">
+				<div class="card" style="width: 20%; float: left; margin: 2%">
 					<div class="card-body">
 						<img src="data:image/jpg;base64, ${user.encodedImage}"
 							alt="User image" style="width: 100%">

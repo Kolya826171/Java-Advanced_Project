@@ -73,7 +73,7 @@ public class NotorietyController {
 		User user = userService.findById(Integer.parseInt(id));
 		Notoriety notoriety = user.getNotoriety();
 		user.setNotoriety(null);
-		notorietyService.delete(notoriety);
+		notorietyService.deleteById(notoriety.getId());
 		
 		List<NotorietyDTO> attributeValue = NotorietyDTOHelper.createList(userService.findWithNotoriety());
 		return getNotoriety(attributeValue.reversed());
